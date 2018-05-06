@@ -32,7 +32,8 @@ public class AnnoncesApplication extends WebSecurityConfigurerAdapter {
                 .and()
                 .csrf().disable().authorizeRequests()
                 .antMatchers("/users").permitAll()
-                .antMatchers("/**").authenticated()
+                //.antMatchers("/**").authenticated()
+                .antMatchers("/**").permitAll()
                 .and()
                 .httpBasic();
     }

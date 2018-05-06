@@ -1,0 +1,16 @@
+.active {
+  background-color: white;
+  color: #0d47a1;
+}
+
+.mat-toolbar.mat-primary{
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 9;
+}
+
+.space-after {
+  height: 60px;
+}

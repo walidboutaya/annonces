@@ -1,41 +1,35 @@
 package dz.mantouri.annonces.model;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 import java.util.List;
 
+@Data
 @Document(language = "fr")
 public class Annonce {
 
     @Id
-    @Getter
-    @Setter
     private String id;
     @Indexed
-    @Getter
-    @Setter
+    @NotNull
     private String title;
-    @Getter
-    @Setter
+    @NotNull
     private String details;
-    @Getter
-    @Setter
+    @NotNull
     private Double price;
-    @Getter
-    @Setter
+    @NotEmpty
     private List<String> photos;
-    @Getter
-    @Setter
     private Announcer announcer;
-    @Getter
-    @Setter
     private LocalDateTime date;
-    @Getter
-    @Setter
-    private Category category;
+    @Indexed
+    @NotNull
+    private SubCategory subCategory;
+    @NotNull
+    private Address address;
 }

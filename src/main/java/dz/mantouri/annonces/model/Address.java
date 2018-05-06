@@ -1,21 +1,19 @@
 package dz.mantouri.annonces.model;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 import org.springframework.data.mongodb.core.index.Indexed;
 
+import javax.validation.constraints.NotNull;
+
+@Data
 public class Address {
 
     @Indexed
-    @Getter
-    @Setter
+    @NotNull
     private String wilaya;
     @Indexed
-    @Getter
-    @Setter
+    @NotNull
     private String ville;
     @Indexed
-    @Getter
-    @Setter
     private String quartier;
 }

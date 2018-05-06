@@ -1,0 +1,68 @@
+<div class="space-after"></div>
+
+<form>
+
+  <div class="row">
+    <div class="col-8">
+      <mat-form-field class="full-width">
+        <mat-select placeholder="Catégorie" [(ngModel)]="offer.subCategory" name="offer.subCategory">
+          <mat-option>Toutes les catégories</mat-option>
+          <mat-optgroup *ngFor="let category of categories" [label]="category.label">
+            <mat-option *ngFor="let subCategory of category.subCategories" [value]="subCategory.name">
+              {{ subCategory.label }}
+            </mat-option>
+          </mat-optgroup>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Titre" [(ngModel)]="offer.title" name="offer.title">
+        <mat-hint>Titre qui permet une recherche rapide de l'annonce</mat-hint>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-select placeholder="Wilaya" [(ngModel)]="offer.address.wilaya" name="offer.address.wilaya">
+          <mat-option>Choisir une wilaya</mat-option>
+          <mat-option *ngFor="let wilaya of wilayas" [value]="wilaya">
+            {{ wilaya }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="Ville" [(ngModel)]="offer.address.ville" name="offer.address.ville">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="Quartier" [(ngModel)]="offer.address.quartier" name="offer.address.quartier">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="Prix" [(ngModel)]="offer.price" name="offer.price">
+        <mat-hint>Prix en DA</mat-hint>
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <textarea matInput placeholder="Détails"  [(ngModel)]="offer.details" name="offer.details"></textarea>
+        <mat-hint>Tout détail important de l'annonce</mat-hint>
+      </mat-form-field>
+
+      <div class="space-after"></div>
+
+      <div  *ngIf="!fileString">
+        <button mat-button (click)="imgFileInput.click()">Ajouter une photo</button>
+        <input hidden type="file" #imgFileInput (change)="newImage($event)"/>
+      </div>
+      <div *ngIf="fileString">
+        <img src={{fileString}} class="card-img"/>
+
+        <button mat-flat-button color="warn" (click)="delete()">Supprimer la photo</button>
+      </div>
+
+      <div class="space-after"></div>
+
+      <button mat-flat-button (click)="publish()">Publier l'annonce</button>
+    </div>
+  </div>
+
+</form>

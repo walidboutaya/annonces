@@ -1,17 +1,13 @@
 package dz.mantouri.annonces.model;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 import org.springframework.data.mongodb.core.index.Indexed;
 
+@Data
 public class Category {
 
     @Indexed
-    @Getter
-    @Setter
     private String category;
     @Indexed
-    @Getter
-    @Setter
-    private String subCategory;
+    private SubCategory subCategory;
 }

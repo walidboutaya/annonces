@@ -1,0 +1,40 @@
+<div class="row">
+  <div *ngFor="let annonce of annonces" class="col-6">
+
+    <div class="card">
+      <div class="row">
+        <div class="col-4">
+          <img src={{annonce.photos[0]}} class="card-img" class="card-height"/>
+        </div>
+        <div class="col-8">
+
+          <div class="row">
+            <div class="col-12">
+              <span class="title">{{ annonce.title }}</span>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-12">
+              <span class="price">{{ annonce.price }} DA</span>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-6">
+              <span class="address">{{ annonce.address.wilaya }} / {{ annonce.address.ville}}</span>
+            </div>
+            <div class="col-6">
+              <span class="date">{{ annonce.date }} </span>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- <img src={{annonce.photos[0]}} class="card-img-top"/> -->

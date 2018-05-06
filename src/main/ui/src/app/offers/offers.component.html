@@ -1,0 +1,68 @@
+<mat-card>
+  <mat-card-content>
+    <form>
+      <mat-grid-list [cols]="3"  rowHeight="50" gutterSize="10px">
+
+        <mat-grid-tile [colspan]="2" [rowspan]="1">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Recherche" [(ngModel)]="title" name="title">
+          </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+          <mat-form-field class="full-width">
+            <mat-select placeholder="Catégorie" [(ngModel)]="category" name="category">
+              <mat-option>Toutes les catégories</mat-option>
+              <mat-optgroup *ngFor="let category of categories" [label]="category.label">
+                <mat-option *ngFor="let subCategory of category.subCategories" [value]="subCategory.name">
+                  {{ subCategory.label }}
+                </mat-option>
+              </mat-optgroup>
+            </mat-select>
+          </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Prix min" [(ngModel)]="minPrice" name="minPrice">
+          </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Pri max" [(ngModel)]="maxPrice" name="maxPrice">
+          </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+          <mat-form-field class="full-width">
+            <mat-select placeholder="Wilaya" [(ngModel)]="wilaya" name="wilaya">
+              <mat-option>Toute l'Algérie</mat-option>
+              <mat-option *ngFor="let wilaya of wilayas" [value]="wilaya">
+                {{ wilaya }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile [colspan]="2" [rowspan]="1">
+        </mat-grid-tile>
+
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+          <button mat-flat-button (click)="search()">Rechercher</button>
+        </mat-grid-tile>
+
+      </mat-grid-list>
+    </form>
+  </mat-card-content>
+</mat-card>
+
+<div class="space-after"></div>
+
+
+<app-offer-list [title]="title"
+                [category]="category"
+                [minPrice]="minPrice"
+                [maxPrice]="maxPrice"
+                [wilaya]="wilaya" #offers>
+</app-offer-list>
