@@ -25,7 +25,7 @@ public class Annonce {
     private Double price;
     @NotEmpty
     private List<String> photos;
-    private Announcer announcer;
+    private String userId;
     private LocalDateTime date;
     @Indexed
     @NotNull

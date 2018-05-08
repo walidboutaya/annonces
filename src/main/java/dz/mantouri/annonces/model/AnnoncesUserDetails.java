@@ -1,11 +1,13 @@
 package dz.mantouri.annonces.model;
 
+import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import javax.validation.constraints.NotNull;
 import java.util.Collection;
 import java.util.List;
 
@@ -14,11 +16,27 @@ public class AnnoncesUserDetails implements UserDetails {
 
     @Id
     @Setter
+    @NotNull
     private String username;
     @Setter
+    @NotNull
     private String password;
     @Setter
-    private Boolean enabled;
+    @NotNull
+    private Boolean enabled = true;
+
+    @Getter
+    @Setter
+    @NotNull
+    private String firstName;
+    @Getter
+    @Setter
+    @NotNull
+    private String lastName;
+    @Getter
+    @Setter
+    @NotNull
+    private String phone;
 
     @Setter
     private List<AnnoncesGrantedAuthority> authorities;

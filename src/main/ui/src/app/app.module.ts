@@ -13,15 +13,17 @@ import {OffersComponent} from './offers/offers.component';
 import {NewOfferComponent} from './new-offer/new-offer.component';
 import {NewUserComponent} from './new-user/new-user.component';
 import {RouterModule, Routes} from "@angular/router";
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { OfferListComponent } from './offers/offer-list/offer-list.component';
 import {HttpClientModule} from "@angular/common/http";
+import { AuthenticationComponent } from './authentication/authentication.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: 'offers', pathMatch: 'full'},
   { path: 'offers', component: OffersComponent },
   { path: 'newOffer', component: NewOfferComponent },
   { path: 'newUser', component: NewUserComponent },
+  { path: 'login', component: AuthenticationComponent },
 ]
 
 @NgModule({
@@ -31,12 +33,14 @@ const appRoutes: Routes = [
     OffersComponent,
     NewOfferComponent,
     NewUserComponent,
-    OfferListComponent
+    OfferListComponent,
+    AuthenticationComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     MatIconModule,
     MatToolbarModule,

@@ -1,6 +1,16 @@
 <div class="space-after"></div>
 
-<form>
+<div *ngIf="!authenticated">
+
+  <p>Vous devez être authentifié</p>
+
+  <button mat-flat-button routerLink="/newUser" routerLinkActive="active">Créer votre compte</button>
+
+  <button mat-flat-button routerLink="/login" routerLinkActive="active">Login</button>
+
+</div>
+
+<form *ngIf="authenticated">
 
   <div class="row">
     <div class="col-8">

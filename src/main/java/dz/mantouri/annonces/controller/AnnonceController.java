@@ -1,15 +1,18 @@
 package dz.mantouri.annonces.controller;
 
 import dz.mantouri.annonces.model.Annonce;
+import dz.mantouri.annonces.model.AnnoncesUserDetails;
 import dz.mantouri.annonces.model.SubCategory;
 import dz.mantouri.annonces.service.AnnonceService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Null;
 import javax.validation.constraints.Size;
+import java.security.Principal;
 import java.util.List;
 
 @RestController
@@ -21,7 +24,9 @@ public class AnnonceController {
     private AnnonceService annonceService;
 
     @PostMapping
-    public void saveAnnonce(@RequestBody @Valid Annonce annonce) {
+    @PreAuthorize("isAuthenticated()")
+    public void saveAnnonce(@RequestBody @Valid Annonce annonce, Principal principal) {
+        annonce.setUserId(principal.getName());
         this.annonceService.save(annonce);
     }
 
@@ -41,8 +46,7 @@ public class AnnonceController {
             @RequestParam(required = false) String wilaya,
             @RequestParam(required = false) Double minPrice,
             @RequestParam(required = false) Double maxPrice,
-            @RequestParam(required = false) SubCategory subCategory
-    ) {
+            @RequestParam(required = false) SubCategory subCategory) {
         return this.annonceService.findAll(title, wilaya, minPrice, maxPrice, subCategory);
     }
 }

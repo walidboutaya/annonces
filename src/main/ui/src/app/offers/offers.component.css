@@ -5,3 +5,7 @@
 .space-after {
   height: 30px;
 }
+
+.mat-card {
+  padding: 10px 24px;
+}

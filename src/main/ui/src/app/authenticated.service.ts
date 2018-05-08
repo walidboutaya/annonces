@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs/Observable";
-import {Offer} from "../model/offer";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 
 @Injectable()
-export class NewOfferService {
+export class AuthenticatedService {
 
   http: HttpClient;
 
@@ -12,10 +11,11 @@ export class NewOfferService {
     this.http = http;
   }
 
-  saveOffer(offer: Offer, authentication: string): Observable<any> {
+  isAuthenticated(authentication: string): Observable<any> {
     let headers = new HttpHeaders();
     headers = headers.append('Authorization', 'Basic ' + authentication);
-    return this.http.post("http://localhost:8080/annonces", offer, {headers: headers});
+
+    return this.http.get("http://localhost:8080/authenticated", {headers: headers});
   }
 
 }
